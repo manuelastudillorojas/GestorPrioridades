@@ -1,0 +1,72 @@
+create database db_prueba
+\c db_prueba
+
+
+
+CREATE TABLE usuarios(
+correo varchar (30) PRIMARY KEY,
+contrasena varchar (30) NOT NULL,
+rol varchar (20) NOT NULL);
+
+
+
+
+CREATE TABLE cliente(
+id serial PRIMARY KEY,
+nombre varchar (100) NOT NULL,
+puntos integer NOT NULL);
+
+
+
+
+CREATE TABLE componente(
+id serial PRIMARY KEY,
+nombre varchar (100) NOT NULL,
+puntos integer NOT NULL);
+
+
+
+
+CREATE TABLE criticidad(
+id serial PRIMARY KEY,
+nombre varchar (15) NOT NULL,
+puntos integer NOT NULL,
+id_cliente integer,
+FOREIGN KEY(id_cliente)
+REFERENCES cliente(id));
+
+
+
+
+CREATE TABLE severidad(
+id serial PRIMARY KEY,
+nombre varchar (15) NOT NULL,
+puntos integer NOT NULL,
+id_criticidad integer NOT NULL,
+FOREIGN KEY(id_criticidad)
+REFERENCES criticidad(id));
+
+
+
+
+CREATE TABLE deadline(
+id serial PRIMARY KEY,
+id_severidad integer NOT NULL,
+max_min integer NOT NULL,
+puntos integer NOT NULL,
+FOREIGN KEY(id_severidad)
+REFERENCES severidad(id));
+
+
+
+
+CREATE TABLE evento(
+id serial PRIMARY KEY,
+descripcion varchar (100) NOT NULL,
+hora_registro timestamp NOT NULL,
+estado varchar (15) NOT NULL,
+puntaje_prio integer NOT NULL,
+id_cliente integer,
+id_componente integer,
+FOREIGN KEY(id_cliente) REFERENCES cliente(id),
+FOREIGN KEY(id_componente) REFERENCES componente(id));

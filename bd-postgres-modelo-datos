@@ -1,0 +1,644 @@
+
+
+CREATE TABLE public.cliente (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    puntos integer NOT NULL
+);
+
+
+
+--
+-- TOC entry 211 (class 1259 OID 16399)
+-- Name: cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cliente_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- TOC entry 3379 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cliente_id_seq OWNED BY public.cliente.id;
+
+
+--
+-- TOC entry 214 (class 1259 OID 16407)
+-- Name: componente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.componente (
+    id integer NOT NULL,
+    nombre character varying(100),
+    puntos integer NOT NULL
+);
+
+
+
+--
+-- TOC entry 213 (class 1259 OID 16406)
+-- Name: componente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.componente_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- TOC entry 3380 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: componente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.componente_id_seq OWNED BY public.componente.id;
+
+
+--
+-- TOC entry 216 (class 1259 OID 16414)
+-- Name: criticidad; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.criticidad (
+    id integer NOT NULL,
+    nombre character varying(15) NOT NULL,
+    puntos integer NOT NULL,
+    id_cliente integer
+);
+
+
+
+--
+-- TOC entry 215 (class 1259 OID 16413)
+-- Name: criticidad_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.criticidad_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- TOC entry 3381 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: criticidad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.criticidad_id_seq OWNED BY public.criticidad.id;
+
+
+--
+-- TOC entry 220 (class 1259 OID 16438)
+-- Name: deadline; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.deadline (
+    id integer NOT NULL,
+    id_severidad integer NOT NULL,
+    max_min integer NOT NULL,
+    puntos integer NOT NULL
+);
+
+
+
+--
+-- TOC entry 219 (class 1259 OID 16437)
+-- Name: deadline_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.deadline_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- TOC entry 3382 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: deadline_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.deadline_id_seq OWNED BY public.deadline.id;
+
+
+--
+-- TOC entry 222 (class 1259 OID 16450)
+-- Name: evento; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.evento (
+    id integer NOT NULL,
+    descripcion character varying(100),
+    hora_registro timestamp without time zone,
+    estado character varying(15),
+    puntaje_prio integer,
+    id_cliente integer,
+    id_componente integer,
+    id_criticidad integer,
+    id_severidad integer
+);
+
+
+
+--
+-- TOC entry 221 (class 1259 OID 16449)
+-- Name: evento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.evento_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- TOC entry 3383 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: evento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.evento_id_seq OWNED BY public.evento.id;
+
+
+--
+-- TOC entry 218 (class 1259 OID 16426)
+-- Name: severidad; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.severidad (
+    id integer NOT NULL,
+    nombre character varying(15) NOT NULL,
+    puntos integer NOT NULL,
+    id_criticidad integer NOT NULL
+);
+
+
+
+--
+-- TOC entry 217 (class 1259 OID 16425)
+-- Name: severidad_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.severidad_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- TOC entry 3384 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: severidad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.severidad_id_seq OWNED BY public.severidad.id;
+
+
+--
+-- TOC entry 210 (class 1259 OID 16394)
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuarios (
+    correo character varying(30) NOT NULL,
+    contrasena character varying(30) NOT NULL,
+    rol character varying(20) NOT NULL
+);
+
+
+
+--
+-- TOC entry 3194 (class 2604 OID 16403)
+-- Name: cliente id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente ALTER COLUMN id SET DEFAULT nextval('public.cliente_id_seq'::regclass);
+
+
+--
+-- TOC entry 3195 (class 2604 OID 16410)
+-- Name: componente id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.componente ALTER COLUMN id SET DEFAULT nextval('public.componente_id_seq'::regclass);
+
+
+--
+-- TOC entry 3196 (class 2604 OID 16417)
+-- Name: criticidad id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.criticidad ALTER COLUMN id SET DEFAULT nextval('public.criticidad_id_seq'::regclass);
+
+
+--
+-- TOC entry 3198 (class 2604 OID 16441)
+-- Name: deadline id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.deadline ALTER COLUMN id SET DEFAULT nextval('public.deadline_id_seq'::regclass);
+
+
+--
+-- TOC entry 3199 (class 2604 OID 16453)
+-- Name: evento id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.evento ALTER COLUMN id SET DEFAULT nextval('public.evento_id_seq'::regclass);
+
+
+--
+-- TOC entry 3197 (class 2604 OID 16429)
+-- Name: severidad id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.severidad ALTER COLUMN id SET DEFAULT nextval('public.severidad_id_seq'::regclass);
+
+
+--
+-- TOC entry 3362 (class 0 OID 16400)
+-- Dependencies: 212
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cliente (id, nombre, puntos) FROM stdin;
+1	BCH	100
+\.
+
+
+--
+-- TOC entry 3364 (class 0 OID 16407)
+-- Dependencies: 214
+-- Data for Name: componente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.componente (id, nombre, puntos) FROM stdin;
+1	Core Network	100
+2	Datacenter	90
+3	Server Fisico	80
+4	Sucursal	70
+5	Maquina Virtual	50
+6	Rendimiento	40
+\.
+
+
+--
+-- TOC entry 3366 (class 0 OID 16414)
+-- Dependencies: 216
+-- Data for Name: criticidad; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.criticidad (id, nombre, puntos, id_cliente) FROM stdin;
+1	critical	100	1
+2	warining	75	1
+3	info	50	1
+\.
+
+
+--
+-- TOC entry 3370 (class 0 OID 16438)
+-- Dependencies: 220
+-- Data for Name: deadline; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.deadline (id, id_severidad, max_min, puntos) FROM stdin;
+7	1	20	100
+8	1	40	50
+9	1	60	25
+10	2	20	100
+11	2	40	50
+12	2	60	25
+13	3	20	100
+14	3	40	50
+15	3	60	25
+16	4	20	100
+17	4	40	50
+18	4	60	25
+19	5	20	100
+20	5	40	50
+21	5	60	25
+22	6	20	100
+23	6	40	50
+24	6	60	25
+25	7	20	100
+26	7	40	50
+27	7	60	25
+28	8	20	100
+29	8	40	50
+30	8	60	25
+31	9	20	100
+32	9	40	50
+33	9	60	25
+\.
+
+
+--
+-- TOC entry 3372 (class 0 OID 16450)
+-- Dependencies: 222
+-- Data for Name: evento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.evento (id, descripcion, hora_registro, estado, puntaje_prio, id_cliente, id_componente, id_criticidad, id_severidad) FROM stdin;
+2	No hay red	2022-01-18 14:13:46	activo	0	1	1	1	1
+3	Equipo de red intermitente	2022-01-18 16:20:46	activo	0	1	1	1	2
+4	Equipo de red con lentitud	2022-01-18 18:31:23	activo	0	1	1	1	3
+5	Sin acceso al vsphere	2022-01-18 19:20:46	activo	0	1	1	2	1
+6	Sistema de refrigeración abajo	2022-01-18 22:45:00	activo	0	1	1	1	1
+7	Sistema de refrigeración abajo	2022-01-18 22:45:00	activo	0	1	1	1	1
+8	Problema SSH server físico	2022-01-19 02:20:00	activo	0	1	1	2	2
+9	Server físico abajo	2022-01-19 04:20:00	activo	0	1	1	1	1
+10	Lentitud en VM vm0120p	2022-01-19 09:20:00	activo	0	1	1	3	2
+12	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+13	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+14	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+15	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+16	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+17	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+18	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+19	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+20	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+21	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+23	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+24	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+27	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+28	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+29	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+30	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+31	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+32	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+33	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+34	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+35	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+36	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
+37	Alerta de CPUs	2022-01-18 17:44:46	activo	0	1	5	1	2
+38		2022-01-18 17:44:46	activo	0	1	5	1	2
+39		2022-01-18 17:44:46	activo	0	1	5	1	2
+40	 	2022-01-18 17:44:46	activo	0	1	5	1	2
+41	 null	2022-01-18 17:44:46	activo	0	1	5	1	2
+42	 null	2022-01-18 17:44:46	activo	0	1	5	1	2
+43		2022-01-18 17:44:46	activo	0	1	5	1	2
+44		2022-01-18 17:44:46	activo	0	1	5	1	2
+45		2022-01-18 17:44:46	activo	0	1	5	1	2
+46	 	2022-01-18 17:44:46	activo	0	1	5	1	2
+47	 	2022-01-18 17:44:46	activo	0	1	5	1	2
+48	  	2022-01-18 17:44:46	activo	0	1	5	1	2
+49	  	2022-01-18 17:44:46	activo	0	1	5	1	2
+50	    	2022-01-18 17:44:46	activo	0	1	5	1	2
+51	Alerta de CPUs	2022-01-18 17:44:46	activo	0	1	5	1	2
+52	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
+53	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
+54	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
+55	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
+56	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
+57	Alerta RAMs	2022-01-18 17:44:46	activo	0	1	5	1	2
+58	Alerta RAMs	2022-01-18 17:44:46	activo	0	1	5	1	2
+\.
+
+
+--
+-- TOC entry 3368 (class 0 OID 16426)
+-- Dependencies: 218
+-- Data for Name: severidad; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.severidad (id, nombre, puntos, id_criticidad) FROM stdin;
+1	alta	100	1
+2	media	75	1
+3	baja	50	1
+4	baja	50	2
+5	baja	50	3
+6	media	75	3
+7	media	75	2
+8	alta	75	2
+9	alta	75	3
+\.
+
+
+--
+-- TOC entry 3360 (class 0 OID 16394)
+-- Dependencies: 210
+-- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuarios (correo, contrasena, rol) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3385 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cliente_id_seq', 1, true);
+
+
+--
+-- TOC entry 3386 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: componente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.componente_id_seq', 6, true);
+
+
+--
+-- TOC entry 3387 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: criticidad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.criticidad_id_seq', 3, true);
+
+
+--
+-- TOC entry 3388 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: deadline_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.deadline_id_seq', 33, true);
+
+
+--
+-- TOC entry 3389 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: evento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.evento_id_seq', 58, true);
+
+
+--
+-- TOC entry 3390 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: severidad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.severidad_id_seq', 9, true);
+
+
+--
+-- TOC entry 3203 (class 2606 OID 16405)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3205 (class 2606 OID 16412)
+-- Name: componente componente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.componente
+    ADD CONSTRAINT componente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3207 (class 2606 OID 16419)
+-- Name: criticidad criticidad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.criticidad
+    ADD CONSTRAINT criticidad_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3211 (class 2606 OID 16443)
+-- Name: deadline deadline_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.deadline
+    ADD CONSTRAINT deadline_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3213 (class 2606 OID 16455)
+-- Name: evento evento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.evento
+    ADD CONSTRAINT evento_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3209 (class 2606 OID 16431)
+-- Name: severidad severidad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.severidad
+    ADD CONSTRAINT severidad_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3201 (class 2606 OID 16398)
+-- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuarios
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (correo);
+
+
+--
+-- TOC entry 3214 (class 2606 OID 16420)
+-- Name: criticidad criticidad_id_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.criticidad
+    ADD CONSTRAINT criticidad_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.cliente(id);
+
+
+--
+-- TOC entry 3216 (class 2606 OID 16444)
+-- Name: deadline deadline_id_severidad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.deadline
+    ADD CONSTRAINT deadline_id_severidad_fkey FOREIGN KEY (id_severidad) REFERENCES public.severidad(id);
+
+
+--
+-- TOC entry 3217 (class 2606 OID 16456)
+-- Name: evento evento_id_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.evento
+    ADD CONSTRAINT evento_id_cliente_fkey FOREIGN KEY (id_cliente) REFERENCES public.cliente(id);
+
+
+--
+-- TOC entry 3218 (class 2606 OID 16461)
+-- Name: evento evento_id_componente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.evento
+    ADD CONSTRAINT evento_id_componente_fkey FOREIGN KEY (id_componente) REFERENCES public.componente(id);
+
+
+--
+-- TOC entry 3220 (class 2606 OID 16471)
+-- Name: evento evento_id_criticidad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.evento
+    ADD CONSTRAINT evento_id_criticidad_fkey FOREIGN KEY (id_criticidad) REFERENCES public.criticidad(id);
+
+
+--
+-- TOC entry 3219 (class 2606 OID 16466)
+-- Name: evento evento_id_severidad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.evento
+    ADD CONSTRAINT evento_id_severidad_fkey FOREIGN KEY (id_severidad) REFERENCES public.severidad(id);
+
+
+--
+-- TOC entry 3215 (class 2606 OID 16432)
+-- Name: severidad severidad_id_criticidad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.severidad
+    ADD CONSTRAINT severidad_id_criticidad_fkey FOREIGN KEY (id_criticidad) REFERENCES public.criticidad(id);
+
+
+-- Completed on 2022-01-19 17:06:13
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -226,16 +226,23 @@ CREATE SEQUENCE public.severidad_id_seq
 ALTER SEQUENCE public.severidad_id_seq OWNED BY public.severidad.id;
 
 
---
--- TOC entry 210 (class 1259 OID 16394)
--- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
---
-
 CREATE TABLE public.usuarios (
+	id integer NOT NULL,
     correo character varying(30) NOT NULL,
     contrasena character varying(30) NOT NULL,
     rol character varying(20) NOT NULL
 );
+
+CREATE SEQUENCE public.usuarios_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+	
+ALTER SEQUENCE public.usuarios_id_seq OWNED BY public.usuarios.id;
+
 
 
 
@@ -570,7 +577,7 @@ ALTER TABLE ONLY public.severidad
 --
 
 ALTER TABLE ONLY public.usuarios
-    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (correo);
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (id);
 
 
 --

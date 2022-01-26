@@ -1,4 +1,6 @@
 const dbconn = require('../config/dbConn')
+const bcrypt = require("bcrypt")
+
 
 const getUsuarios = () => {
     return new Promise((resolve, reject) => {
@@ -13,10 +15,11 @@ const getUsuarios = () => {
     }) 
 }
 
-const getUsuarioByEmail = (correo) => {
+
+const getUsuarioById = (id) => {
 
     return new Promise((resolve, reject) => {
-        dbconn.query(`SELECT * FROM usuarios WHERE correo = '${correo}'`, (err, result) => {
+        dbconn.query(`SELECT * FROM usuarios WHERE id = ${id}`, (err, result) => {
             if (err) {
                 reject(err)
             }
@@ -30,7 +33,8 @@ const getUsuarioByEmail = (correo) => {
 const addUsuario = (objUser) => {
 
     return new Promise((resolve, reject) => {
-        dbconn.query(`INSERT INTO public.usuarios(correo, contrasena, rol) VALUES('${objUser.correo}','${objUser.contrasena}','${objUser.rol}') RETURNING *`, 
+        
+        dbconn.query(`INSERT INTO public.usuarios(correo, contrasena, rol, nombre) VALUES('${objUser.correo}','${objUser.contrasena}','${objUser.rol}', '${objUser.nombre}') RETURNING *`, 
                 (err, result) => {
                     if (err) {
                         reject(err)
@@ -40,9 +44,9 @@ const addUsuario = (objUser) => {
     })
 }
 
-const updateUsuario = (correo, objUser) => {
+const updateUsuario = (id, objUser) => {
     return new Promise((resolve, reject) => {
-        dbconn.query(`UPDATE usuarios SET contrasena='${objUser.contrasena}', rol='${objUser.rol}' WHERE correo='${correo}'`,
+        dbconn.query(`UPDATE usuarios SET contrasena='${objUser.contrasena}', rol='${objUser.rol}', nombre='${objUser.nombre}' WHERE id=${id}`,
                 (err, result) => {
                     if (err) {
                         reject(err)
@@ -53,9 +57,9 @@ const updateUsuario = (correo, objUser) => {
     )
 }
 
-const deleteUsuario = (correo) => {
+const deleteUsuario = (id) => {
     return new Promise((resolve, reject) => {
-        dbconn.query(`DELETE FROM usuarios WHERE correo='${correo}'`,
+        dbconn.query(`DELETE FROM usuarios WHERE id=${id}`,
                 (err, result) => {
                     if (err) {
                         reject(err)
@@ -68,8 +72,8 @@ const deleteUsuario = (correo) => {
 
 module.exports = {
     getUsuarios,
-    getUsuarioByEmail,
     addUsuario,
     updateUsuario,
-    deleteUsuario
+    deleteUsuario,
+    getUsuarioById
 }

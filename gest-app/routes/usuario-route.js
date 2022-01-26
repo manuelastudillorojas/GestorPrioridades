@@ -4,9 +4,9 @@ const usuarioController = require('../controllers/usuario-controller')
 
 
 router.get('/', usuarioController.getUsuarios)
-router.get('/:mail', usuarioController.getUsuarioByEmail)
+router.get('/:id', usuarioController.getUsuarioById)
 router.post('/', usuarioController.addUsuario)
-router.put('/:mail', usuarioController.updateUsuario)
-router.delete('/:mail', usuarioController.deleteUsuario)
+router.put('/:id', usuarioController.updateUsuario)
+router.delete('/:id', usuarioController.deleteUsuario)
 
 module.exports = router

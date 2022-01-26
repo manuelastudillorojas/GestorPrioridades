@@ -15,6 +15,7 @@ const criticidadRouter = require('./routes/criticidad-route')
 const deadlineRouter = require('./routes/deadline-route')
 const severidadRouter = require('./routes/severidad-route')
 const componenteRouter = require('./routes/componente-route')
+const authRouter = require('./routes/login-route')
 
 
 const app = express()
@@ -36,6 +37,8 @@ app.use('/criticidad', criticidadRouter)
 app.use('/deadline', deadlineRouter)
 app.use('/severidad', severidadRouter)
 app.use('/componente', componenteRouter)
+app.use('/auth', authRouter)
+
 
 
 

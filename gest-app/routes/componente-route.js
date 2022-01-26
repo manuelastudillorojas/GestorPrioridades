@@ -1,12 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const componenteController = require('../controllers/componente-controller')
+const authController = require('../controllers/authController')
 
 
-router.get('/', componenteController.getComponente)
-router.get('/:id', componenteController.getComponenteById)
-router.post('/', componenteController.addComponente)
-router.delete('/:id', componenteController.deleteComponente)
-router.put('/:id', componenteController.updateComponente)
+
+router.get('/', authController.isAuthenticated, componenteController.getComponente)
+router.get('/:id', authController.isAuthenticated, componenteController.getComponenteById)
+router.post('/', authController.isAuthenticated, componenteController.addComponente)
+router.delete('/:id', authController.isAuthenticated, componenteController.deleteComponente)
+router.put('/:id', authController.isAuthenticated, componenteController.updateComponente)
 
 module.exports = router

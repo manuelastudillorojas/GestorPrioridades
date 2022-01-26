@@ -1,4 +1,6 @@
 const usuarioModel = require('../model/usuario-model')
+const bcrypt = require("bcrypt")
+
 
 /**
  * Función auxiliar para validar campos vacíos
@@ -43,14 +45,14 @@ const getUsuarios = async (req, res) => {
  * *Revisar si la busqueda por correo está bien
  */
 
-const getUsuarioByEmail = async (req, res) => {
+const getUsuarioById = async (req, res) => {
     try {
-        if(validaVacio(req.params.mail)){
-            const usuario = await usuarioModel.getUsuarioByEmail(req.params.mail)
+        if(validaVacio(req.params.id)){
+            const usuario = await usuarioModel.getUsuarioById(req.params.id)
             
             if(usuario.rows.length == 0){
                 sendJsonStatus(res, 300, {
-                    msg : `No hay usuarios registrados con el correo ${req.params.mail}`, 
+                    msg : `No hay usuarios registrados con el Id ${req.params.id}`, 
                     tipo: `error`
                 })
             } else {
@@ -60,7 +62,7 @@ const getUsuarioByEmail = async (req, res) => {
             }
           } else {
             sendJsonStatus(res, 300, {
-                msg: `Correo vacío`, 
+                msg: `Id vacío`, 
                 tipo: `error`
             })
           }
@@ -69,7 +71,6 @@ const getUsuarioByEmail = async (req, res) => {
         sendJsonStatus(res, 500, error.message)
     }
 }
-
 /**
  * Agrega un usuario
  * IMPORTANTE: Falta valida que el correo ya exita
@@ -77,7 +78,10 @@ const getUsuarioByEmail = async (req, res) => {
  const addUsuario = async (req, res) => {
     try {
 
-        if(validaVacio(req.body.correo) && validaVacio(req.body.contrasena) && validaVacio(req.body.rol)) {
+        if(validaVacio(req.body.correo) && validaVacio(req.body.contrasena) && validaVacio(req.body.rol) && validaVacio(req.body.nombre)) {
+
+                let hashendPassword = await bcrypt.hash(req.body.contrasena, 10)
+                req.body.contrasena = hashendPassword
 
                 const validaCorreoDuplicado = await usuarioModel.getUsuarioByEmail(req.body.correo)
                 if(validaCorreoDuplicado.rowCount == 0) {
@@ -108,12 +112,15 @@ const getUsuarioByEmail = async (req, res) => {
 }
 
 /**
- * Modifica un usuario buscado por correo
+ * Modifica un usuario buscado por id, pero no permite cambiar el correo
  */
  const updateUsuario = async (req, res) => {
     try {
-        if(validaVacio(req.params.mail) && validaVacio(req.body.contrasena) && validaVacio(req.body.rol)){
-                const usuario = await usuarioModel.updateUsuario(req.params.mail, req.body)
+        if(validaVacio(req.params.id) && validaVacio(req.body.correo) && validaVacio(req.body.contrasena) && validaVacio(req.body.rol) && validaVacio(req.body.nombre)){
+
+                let hashendPassword = await bcrypt.hash(req.body.contrasena, 10)
+                req.body.contrasena = hashendPassword
+                const usuario = await usuarioModel.updateUsuario(req.params.id, req.body)
                 sendJsonStatus(res, 200, {
                     msg: `Datos actualizados en ${usuario.rowCount} filas`, 
                     tipo: `ok`
@@ -130,12 +137,12 @@ const getUsuarioByEmail = async (req, res) => {
 }
 
 /**
- * Elimina un usuario buscado por correo
+ * Elimina un usuario buscado por id
  */
  const deleteUsuario = async (req, res) => {
     try {
-        if(validaVacio(req.params.mail)) {
-            const usuario = await usuarioModel.deleteUsuario(req.params.mail)
+        if(validaVacio(req.params.id)) {
+            const usuario = await usuarioModel.deleteUsuario(req.params.id)
             sendJsonStatus(res, 200, {
                 msg: `Cantidad de filas eliminadas: ${usuario.rowCount}`, 
                 tipo: `ok`
@@ -153,8 +160,8 @@ const getUsuarioByEmail = async (req, res) => {
 
 module.exports = {
     getUsuarios,
-    getUsuarioByEmail,
     addUsuario,
     updateUsuario,
-    deleteUsuario
+    deleteUsuario,
+    getUsuarioById
 }

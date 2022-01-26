@@ -1,12 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const criticidadController = require('../controllers/criticidad-controller')
+const authController = require('../controllers/authController')
 
 
-router.get('/', criticidadController.getCriticidad)
-router.get('/:id', criticidadController.getCriticidadId)
-router.post('/', criticidadController.addCriticidad)
-router.delete('/:id', criticidadController.deleteCriticidad)
-router.put('/:id', criticidadController.updateCriticidad)
+
+router.get('/', authController.isAuthenticated, criticidadController.getCriticidad)
+router.get('/:id', authController.isAuthenticated, criticidadController.getCriticidadId)
+router.post('/', authController.isAuthenticated, criticidadController.addCriticidad)
+router.delete('/:id', authController.isAuthenticated, criticidadController.deleteCriticidad)
+router.put('/:id', authController.isAuthenticated, criticidadController.updateCriticidad)
 
 module.exports = router

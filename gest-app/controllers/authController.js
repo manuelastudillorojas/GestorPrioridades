@@ -157,6 +157,8 @@ exports.login = async (req, res) => {
         console.log(error)
     }
 }
+
+
 exports.isAuthenticated = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
@@ -179,14 +181,14 @@ exports.isAuthenticated = async (req, res, next) => {
 
                 }
             )
-
-
         } catch (error) {
             console.log(error)
             return next()
         }
     } else {
-        res.send({ msg: `no está logeado`})
+        res.status(401).json({
+            error:"Accion no permitida",
+          });
 
     }
 }

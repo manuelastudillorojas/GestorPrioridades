@@ -62,6 +62,8 @@ exports.register = async (req, res)=>{
         console.log(error)
     } 
 } 
+
+
 exports.login = async(req,res)=>{
    try{
         const email = req.body.email;

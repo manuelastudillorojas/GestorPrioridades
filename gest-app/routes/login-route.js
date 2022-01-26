@@ -8,7 +8,7 @@ router.post('/register', authController.register)
 router.post('/login', authController.login)
 router.get('/logout', authController.logout)
 
-router.get('/test', authController.isAuthenticated, (req, res) => {
+router.get('/test', authController.isAuthenticated('admin'), (req, res) => {
     res.send('logeado')
 })
 

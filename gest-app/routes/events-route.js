@@ -5,10 +5,10 @@ const authController = require('../controllers/authController')
 
 
 
-router.get('/', authController.isAuthenticated, eventoController.getEvents)
-router.get('/:id', authController.isAuthenticated, eventoController.getEventById)
-router.post('/', authController.isAuthenticated, eventoController.addEvent)
-router.put('/:id', authController.isAuthenticated, eventoController.updateEvent)
-router.delete('/:id', authController.isAuthenticated, eventoController.deleteEvent)
+router.get('/', authController.isAuthenticated('oper'), eventoController.getEvents)
+router.get('/:id', authController.isAuthenticated('oper'), eventoController.getEventById)
+router.post('/', authController.isAuthenticated('admin'), eventoController.addEvent)
+router.put('/:id', authController.isAuthenticated('admin'), eventoController.updateEvent)
+router.delete('/:id', authController.isAuthenticated('admin'), eventoController.deleteEvent)
 
 module.exports = router

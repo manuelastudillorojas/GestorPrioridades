@@ -5,10 +5,10 @@ const authController = require('../controllers/authController')
 
 
 
-router.get('/', authController.isAuthenticated, criticidadController.getCriticidad)
-router.get('/:id', authController.isAuthenticated, criticidadController.getCriticidadId)
-router.post('/', authController.isAuthenticated, criticidadController.addCriticidad)
-router.delete('/:id', authController.isAuthenticated, criticidadController.deleteCriticidad)
-router.put('/:id', authController.isAuthenticated, criticidadController.updateCriticidad)
+router.get('/', authController.isAuthenticated('oper'), criticidadController.getCriticidad)
+router.get('/:id', authController.isAuthenticated('oper'), criticidadController.getCriticidadId)
+router.post('/', authController.isAuthenticated('admin'), criticidadController.addCriticidad)
+router.delete('/:id', authController.isAuthenticated('admin'), criticidadController.deleteCriticidad)
+router.put('/:id', authController.isAuthenticated('admin'), criticidadController.updateCriticidad)
 
 module.exports = router

@@ -4,10 +4,10 @@ const deadlineController = require('../controllers/deadline-controller')
 const authController = require('../controllers/authController')
 
 
-router.get('/', authController.isAuthenticated, deadlineController.getDeadline)
-router.get('/:id', authController.isAuthenticated, deadlineController.getDeadlineById)
-router.post('/', authController.isAuthenticated, deadlineController.addDeadline)
-router.delete('/:id', authController.isAuthenticated, deadlineController.deleteDeadline)
-router.put('/:id', authController.isAuthenticated, deadlineController.updateDeadline)
+router.get('/', authController.isAuthenticated('oper'), deadlineController.getDeadline)
+router.get('/:id', authController.isAuthenticated('oper'), deadlineController.getDeadlineById)
+router.post('/', authController.isAuthenticated('admin'), deadlineController.addDeadline)
+router.delete('/:id', authController.isAuthenticated('admin'), deadlineController.deleteDeadline)
+router.put('/:id', authController.isAuthenticated('admin'), deadlineController.updateDeadline)
 
 module.exports = router

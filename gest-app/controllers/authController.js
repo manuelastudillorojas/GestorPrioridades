@@ -98,14 +98,14 @@ exports.login = async (req, res) => {
 
                         bcrypt.compare(password, user.contrasena, (err, isMatch) => {
                             if (err) {
-                                console.log(err)
+                                throw err
                             }
-                            console.log(password, user.contrasena, isMatch)
+                            //console.log(password, user.contrasena, isMatch)
                             if (isMatch) {
 
-                                console.log('hizo match')
+                                console.log(user.rol)
                                 const id = user.id
-                                const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
+                                const token = jwt.sign({ id: id, rol: user.rol}, process.env.JWT_SECRETO, {
                                     expiresIn: process.env.JWT_TIEMPO_EXPIRA
                                 })
                                 //console.log("TOKEN:" + token + "para el usuario:" + user.name)
@@ -154,16 +154,19 @@ exports.login = async (req, res) => {
             )
         }
     } catch (error) {
-        console.log(error)
+        res.status(401).json({
+            error:"Accion no permitida",
+          });
     }
 }
 
 
-exports.isAuthenticated = async (req, res, next) => {
+exports.isAuthenticated = (rol) => async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
 
+            console.log(decodificada)
             dbconn.query(
                 `SELECT * FROM usuarios WHERE id = $1`,
                 [decodificada.id],
@@ -176,7 +179,15 @@ exports.isAuthenticated = async (req, res, next) => {
                             return next()
                         }
                         req.user = results.rows[0]
-                        return next()
+
+                        if(results.rows[0].rol == rol || results.rows[0].rol == 'admin') {
+                            console.log(results.rows[0].rol)
+                            return next()
+                        }  else {
+                            res.status(401).json({
+                                error:"Accion no permitida: no tienes autorizacion",
+                            });
+                        }
                     }
 
                 }

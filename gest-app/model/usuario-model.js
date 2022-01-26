@@ -15,6 +15,19 @@ const getUsuarios = () => {
     }) 
 }
 
+const getUsuarioByEmail = (correo) => {
+
+    return new Promise((resolve, reject) => {
+        dbconn.query(`SELECT * FROM usuarios WHERE correo = '${correo}'`, (err, result) => {
+            if (err) {
+                reject(err)
+            }
+    
+            //console.log(result.rows)
+            resolve(result)
+        })
+    }) 
+}
 
 const getUsuarioById = (id) => {
 
@@ -72,6 +85,7 @@ const deleteUsuario = (id) => {
 
 module.exports = {
     getUsuarios,
+    getUsuarioByEmail,
     addUsuario,
     updateUsuario,
     deleteUsuario,

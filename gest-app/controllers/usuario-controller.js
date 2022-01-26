@@ -45,6 +45,34 @@ const getUsuarios = async (req, res) => {
  * *Revisar si la busqueda por correo está bien
  */
 
+const getUsuarioByEmail = async (req, res) => {
+    try {
+        if(validaVacio(req.params.correo)){
+            const usuario = await usuarioModel.getUsuarioByEmail(req.params.correo)
+            
+            if(usuario.rows.length == 0){
+                sendJsonStatus(res, 300, {
+                    msg : `No hay usuarios registrados con el correo ${req.params.correo}`, 
+                    tipo: `error`
+                })
+            } else {
+                sendJsonStatus(res, 200, {
+                    datos: usuario.rows
+                })
+            }
+          } else {
+            sendJsonStatus(res, 300, {
+                msg: `Correo vacío`, 
+                tipo: `error`
+            })
+          }
+
+    } catch (error) {
+        sendJsonStatus(res, 500, error.message)
+    }
+}
+
+
 const getUsuarioById = async (req, res) => {
     try {
         if(validaVacio(req.params.id)){
@@ -160,6 +188,7 @@ const getUsuarioById = async (req, res) => {
 
 module.exports = {
     getUsuarios,
+    getUsuarioByEmail,
     addUsuario,
     updateUsuario,
     deleteUsuario,

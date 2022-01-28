@@ -157,7 +157,6 @@ CREATE TABLE public.evento (
     estado character varying(15),
     puntaje_prio integer,
     id_cliente integer,
-    id_componente integer,
     id_criticidad integer,
     id_severidad integer
 );
@@ -377,60 +376,16 @@ COPY public.deadline (id, id_severidad, max_min, puntos) FROM stdin;
 -- Data for Name: evento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.evento (id, descripcion, hora_registro, estado, puntaje_prio, id_cliente, id_componente, id_criticidad, id_severidad) FROM stdin;
-2	No hay red	2022-01-18 14:13:46	activo	0	1	1	1	1
-3	Equipo de red intermitente	2022-01-18 16:20:46	activo	0	1	1	1	2
-4	Equipo de red con lentitud	2022-01-18 18:31:23	activo	0	1	1	1	3
-5	Sin acceso al vsphere	2022-01-18 19:20:46	activo	0	1	1	2	1
-6	Sistema de refrigeración abajo	2022-01-18 22:45:00	activo	0	1	1	1	1
-7	Sistema de refrigeración abajo	2022-01-18 22:45:00	activo	0	1	1	1	1
-8	Problema SSH server físico	2022-01-19 02:20:00	activo	0	1	1	2	2
-9	Server físico abajo	2022-01-19 04:20:00	activo	0	1	1	1	1
-10	Lentitud en VM vm0120p	2022-01-19 09:20:00	activo	0	1	1	3	2
-12	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-13	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-14	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-15	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-16	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-17	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-18	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-19	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-20	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-21	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-23	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-24	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-27	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-28	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-29	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-30	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-31	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-32	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-33	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-34	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-35	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-36	Alerta de CPU	2022-01-18 17:44:46	activo	0	1	5	3	2
-37	Alerta de CPUs	2022-01-18 17:44:46	activo	0	1	5	1	2
-38		2022-01-18 17:44:46	activo	0	1	5	1	2
-39		2022-01-18 17:44:46	activo	0	1	5	1	2
-40	 	2022-01-18 17:44:46	activo	0	1	5	1	2
-41	 null	2022-01-18 17:44:46	activo	0	1	5	1	2
-42	 null	2022-01-18 17:44:46	activo	0	1	5	1	2
-43		2022-01-18 17:44:46	activo	0	1	5	1	2
-44		2022-01-18 17:44:46	activo	0	1	5	1	2
-45		2022-01-18 17:44:46	activo	0	1	5	1	2
-46	 	2022-01-18 17:44:46	activo	0	1	5	1	2
-47	 	2022-01-18 17:44:46	activo	0	1	5	1	2
-48	  	2022-01-18 17:44:46	activo	0	1	5	1	2
-49	  	2022-01-18 17:44:46	activo	0	1	5	1	2
-50	    	2022-01-18 17:44:46	activo	0	1	5	1	2
-51	Alerta de CPUs	2022-01-18 17:44:46	activo	0	1	5	1	2
-52	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
-53	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
-54	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
-55	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
-56	Alerta RAM	2022-01-18 17:44:46	activo	0	1	5	1	2
-57	Alerta RAMs	2022-01-18 17:44:46	activo	0	1	5	1	2
-58	Alerta RAMs	2022-01-18 17:44:46	activo	0	1	5	1	2
+COPY public.evento (id, descripcion, hora_registro, estado, puntaje_prio, id_cliente, id_criticidad, id_severidad) FROM stdin;
+2	No hay red	2022-01-18 14:13:46	activo	0	1	1	1
+3	Equipo de red intermitente	2022-01-18 16:20:46	activo	0	1	1	2
+4	Equipo de red con lentitud	2022-01-18 18:31:23	activo	0	1	1	3
+5	Sin acceso al vsphere	2022-01-18 19:20:46	activo	0	1	2	1
+6	Sistema de refrigeración abajo	2022-01-18 22:45:00	activo	0	1	1	1
+7	Sistema de refrigeración abajo	2022-01-18 22:45:00	activo	0	1	1	1
+8	Problema SSH server físico	2022-01-19 02:20:00	activo	0	1	2	2
+9	Server físico abajo	2022-01-19 04:20:00	activo	0	1	1	1
+10	Lentitud en VM vm0120p	2022-01-19 09:20:00	activo	0	1	3	2
 \.
 
 
@@ -608,15 +563,6 @@ ALTER TABLE ONLY public.evento
 
 
 --
--- TOC entry 3218 (class 2606 OID 16461)
--- Name: evento evento_id_componente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.evento
-    ADD CONSTRAINT evento_id_componente_fkey FOREIGN KEY (id_componente) REFERENCES public.componente(id);
-
-
---
 -- TOC entry 3220 (class 2606 OID 16471)
 -- Name: evento evento_id_criticidad_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
@@ -649,3 +595,46 @@ ALTER TABLE ONLY public.severidad
 -- PostgreSQL database dump complete
 --
 
+
+CREATE TABLE public.evento_componente (
+    id integer NOT NULL,
+    id_componente integer,
+    id_evento integer
+);
+
+
+
+--
+-- TOC entry 221 (class 1259 OID 16449)
+-- Name: evento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.evento_componente_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.evento_componente_id_seq OWNED BY public.evento_componente.id;
+
+ALTER TABLE ONLY public.evento_componente ALTER COLUMN id SET DEFAULT nextval('public.evento_componente_id_seq'::regclass);
+
+ALTER TABLE ONLY public.evento_componente
+    ADD CONSTRAINT evento_componente_pkey PRIMARY KEY (id);
+
+
+ALTER TABLE ONLY public.evento_componente
+    ADD CONSTRAINT evento_componente_id_componente_fkey FOREIGN KEY (id_componente) REFERENCES public.componente(id);
+
+ALTER TABLE ONLY public.evento_componente
+    ADD CONSTRAINT evento_componente_id_evento_fkey FOREIGN KEY (id_evento) REFERENCES public.evento(id);
+
+
+COPY public.evento_componente (id, id_componente, id_evento) FROM stdin;
+1	1	2
+1	1	3
+1	2	2
+1	2	2
+\.

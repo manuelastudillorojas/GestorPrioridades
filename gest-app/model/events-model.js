@@ -30,13 +30,14 @@ const getEventById = (id) => {
 const addEvent = (objEvent) => {
 
     return new Promise((resolve, reject) => {
-        dbconn.query(`INSERT INTO evento(id, descripcion, hora_registro, estado, puntaje_prio, id_cliente, id_componente, id_criticidad, id_severidad)
+        dbconn.query(`INSERT INTO evento(id, descripcion, hora_registro, estado, puntaje_prio, id_cliente, id_criticidad, id_severidad)
                     VALUES (nextval('evento_id_seq'), '${objEvent.descripcion}', '${objEvent.hora_registro}', '${objEvent.estado}', ${objEvent.puntaje_prio},
-                    ${objEvent.id_cliente}, ${objEvent.id_componente}, ${objEvent.id_criticidad}, ${objEvent.id_severidad}) RETURNING *`, 
+                    ${objEvent.id_cliente}, ${objEvent.id_criticidad}, ${objEvent.id_severidad}) RETURNING *`, 
                 (err, result) => {
                     if (err) {
                         reject(err)
                     }
+
                     resolve(result)
                 })
     })
@@ -45,13 +46,14 @@ const addEvent = (objEvent) => {
 const updateEvent = (id, objEvent) => {
     return new Promise((resolve, reject) => {
         dbconn.query(`UPDATE evento SET descripcion = '${objEvent.descripcion}', hora_registro = '${objEvent.hora_registro}', estado = '${objEvent.estado}', 
-                  puntaje_prio = ${objEvent.puntaje_prio}, id_cliente = ${objEvent.id_cliente}, id_componente = ${objEvent.id_componente}, id_criticidad = ${objEvent.id_criticidad}, 
+                  puntaje_prio = ${objEvent.puntaje_prio}, id_cliente = ${objEvent.id_cliente}, id_criticidad = ${objEvent.id_criticidad}, 
                   id_severidad = ${objEvent.id_severidad} 
                   WHERE id = ${id}`,
                 (err, result) => {
                     if (err) {
                         reject(err)
                     }
+                    //Acá debo agregar que el componente se actualice en la tabla evento_componente
                     resolve(result)
                 })
         }

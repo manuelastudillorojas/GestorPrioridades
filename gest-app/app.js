@@ -15,6 +15,7 @@ const criticidadRouter = require('./routes/criticidad-route')
 const deadlineRouter = require('./routes/deadline-route')
 const severidadRouter = require('./routes/severidad-route')
 const componenteRouter = require('./routes/componente-route')
+const eventoComponenteRouter = require('./routes/evento_componente-route')
 const authRouter = require('./routes/login-route')
 
 
@@ -37,6 +38,7 @@ app.use('/criticidad', criticidadRouter)
 app.use('/deadline', deadlineRouter)
 app.use('/severidad', severidadRouter)
 app.use('/componente', componenteRouter)
+app.use('/evento-componente', eventoComponenteRouter)
 app.use('/auth', authRouter)
 
 

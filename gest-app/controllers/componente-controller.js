@@ -55,7 +55,7 @@ const getComponenteById = async (req, res) => {
 
 const addComponente = async (req, res) => {
   try {
-    if (validaVacio(req.body.nombre) && validaVacio(req.body.puntos)) {
+    if (validaVacio(req.body.nombre) && validaVacio(req.body.puntos) && validaVacio(req.body.id_cliente)) {
       const componente = await componenteModel.addComponente(req.body)
       sendJsonStatus(res, 200, { 
         msg: { 
@@ -96,7 +96,7 @@ const deleteComponente = async (req, res) => {
 
 const updateComponente = async (req, res) => {
   try {
-    if (validaVacio(req.params.id) && validaVacio(req.body.nombre) && validaVacio(req.body.puntos)) {
+    if (validaVacio(req.params.id) && validaVacio(req.body.nombre) && validaVacio(req.body.puntos) && validaVacio(req.body.id_cliente)) {
       const componente = await componenteModel.updateComponente(req.params.id, req.body)
       sendJsonStatus(res, 200, {
         msg: `Datos actualizados en ${componente.rowCount} filas`,

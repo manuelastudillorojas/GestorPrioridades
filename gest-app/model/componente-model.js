@@ -25,7 +25,7 @@ const getComponenteById = (id) => {
 
 const addComponente = (objComponente) => {
   return new Promise((resolve, reject) => {
-    dbconn.query(`INSERT INTO componente (nombre, puntos) VALUES ('${objComponente.nombre}', ${objComponente.puntos}) RETURNING *`,
+    dbconn.query(`INSERT INTO componente (nombre, puntos, id_cliente) VALUES ('${objComponente.nombre}', ${objComponente.puntos}, ${objComponente.id_cliente}) RETURNING *`,
       (err, result) => {
         if (err) {
           reject(err)
@@ -38,7 +38,7 @@ const addComponente = (objComponente) => {
 
 const updateComponente = (id, objComponente) => {
   return new Promise((resolve, reject) => {
-    dbconn.query(`UPDATE componente SET nombre = '${objComponente.nombre}', puntos = ${objComponente.puntos} WHERE id = ${id}`,
+    dbconn.query(`UPDATE componente SET nombre = '${objComponente.nombre}', puntos = ${objComponente.puntos}, id_cliente=${objComponente.id_cliente} WHERE id = ${id}`,
       (err, result) => {
         if (err) {
           reject(err)

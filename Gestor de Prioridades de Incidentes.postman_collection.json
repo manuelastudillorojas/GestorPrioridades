@@ -1,0 +1,1852 @@
+{
+	"info": {
+		"_postman_id": "86148cf4-3b79-468e-80f9-930f5dcc801e",
+		"name": "Gestor de Prioridades de Incidentes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "usuarios-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "test@correo.cl",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "juancito",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "test@correo.cl",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "admins",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "juancito",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuario/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuario",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "test@correo.cl",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "admins",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "juancito",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuario/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuario",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "test@correo.cl",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "admins",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "juancito",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuarios-get-by-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "test@correo.cl",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "admins",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "juancito",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/usuario/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuario",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "cliente-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "BCH1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "puntos",
+									"value": "80",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente-get-by-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "BCH1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "puntos",
+									"value": "80",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "BCH2",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "75",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "BCH1",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "80",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "BCH1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "puntos",
+									"value": "80",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cliente/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cliente",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "eventos",
+			"item": [
+				{
+					"name": "evento-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "Alerta RAMs",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "hora_registro",
+									"value": "2022-01-18 17:44:46.00",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "estado",
+									"value": "activo",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "puntaje_prio",
+									"value": "0",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "5",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "id_criticidad",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "id_severidad",
+									"value": "2",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/evento/66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "Alerta RAMs",
+									"type": "default"
+								},
+								{
+									"key": "hora_registro",
+									"value": "2022-01-18 17:44:46.00",
+									"type": "default"
+								},
+								{
+									"key": "estado",
+									"value": "activo",
+									"type": "default"
+								},
+								{
+									"key": "puntaje_prio",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "id_componente",
+									"value": "5",
+									"type": "default"
+								},
+								{
+									"key": "id_criticidad",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "id_severidad",
+									"value": "2",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "Alerta RAMsssss",
+									"type": "default"
+								},
+								{
+									"key": "hora_registro",
+									"value": "2022-01-18 17:44:46.00",
+									"type": "default"
+								},
+								{
+									"key": "estado",
+									"value": "activo",
+									"type": "default"
+								},
+								{
+									"key": "puntaje_prio",
+									"value": "0",
+									"type": "default"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "id_componente",
+									"value": "5",
+									"type": "default"
+								},
+								{
+									"key": "id_criticidad",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "id_severidad",
+									"value": "2",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento/66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/evento/66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento",
+								"66"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "componentes",
+			"item": [
+				{
+					"name": "componente-get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/componente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"componente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "componente-get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/componente/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"componente",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "componente-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Discos Solidos",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/componente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"componente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "componente-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Discos Caca",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/componente/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"componente",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "componente-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/componente/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"componente",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "criticidad",
+			"item": [
+				{
+					"name": "criticidad-get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/criticidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"criticidad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criticidad-get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/criticidad/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"criticidad",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criticidad-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "critical23",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "1003",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/criticidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"criticidad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criticidad-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "critical2",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "1003",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/criticidad/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"criticidad",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criticidad-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/criticidad/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"criticidad",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "deadline",
+			"item": [
+				{
+					"name": "deadline-get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/deadline",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deadline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deadline-get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/deadline/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deadline",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deadline-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_severidad",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "max_min",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "102",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/deadline",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deadline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deadline-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_severidad",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "max_min",
+									"value": "3003",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "102",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/deadline/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deadline",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deadline-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/deadline/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deadline",
+								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "severidad",
+			"item": [
+				{
+					"name": "severidad-get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/severidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"severidad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "severidad-get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/severidad/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"severidad",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "severidad-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "altapoquewea",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "id_criticidad",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/severidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"severidad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "severidad-update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "altaposo",
+									"type": "text"
+								},
+								{
+									"key": "puntos",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "id_criticidad",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/severidad/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"severidad",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "severidad-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/severidad/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"severidad",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "auth-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "prueba3@correo.cl",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "test@correo.cl",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "1234567",
+									"type": "text"
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "prueba5@correo.cl",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id_cliente",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "prueba5@correo.cl",
+									"type": "text"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "contrasenaConfirm",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "juancito",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ds-newrelic",
+			"item": [
+				{
+					"name": "get-events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Api-Key",
+								"value": "NRAK-S18ZROT69V4I7B4O8BVYFSRTW33",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.newrelic.com/v2/alerts_events.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"newrelic",
+								"com"
+							],
+							"path": [
+								"v2",
+								"alerts_events.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "evento_componente",
+			"item": [
+				{
+					"name": "evento-componente-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_evento",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "id_componente",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento-componente/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente",
+								""
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-componente-update_by-evento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_evento",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento-componente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-componente-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/evento-componente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-componente-get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento-componente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente"
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-componente-get-by-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento-componente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente",
+								"4"
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-componente-get_by_evento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento-componente/evento/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente",
+								"evento",
+								"2"
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "evento-componente-get_by_componente",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/evento-componente/componente/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"evento-componente",
+								"componente",
+								"3"
+							],
+							"query": [
+								{
+									"key": "id_evento",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "id_componente",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

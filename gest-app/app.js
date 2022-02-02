@@ -42,7 +42,11 @@ app.use('/evento-componente', eventoComponenteRouter)
 app.use('/auth', authRouter)
 
 
+const ds = require('./datasource/newrelic')
 
+ds.getOpenIncidentesFromNRV1(1).then(data => {
+  console.log(data)
+})
 
 
 // catch 404 and forward to error handler

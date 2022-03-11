@@ -123,7 +123,8 @@ exports.login = async (req, res) => {
                                     showConfirmButton: false,
                                     timer: 800,
                                     ruta: '',
-                                    token: token
+                                    token: token,
+                                    correo: email
                                 })
                             } else {
                                 //password is incorrect
@@ -162,9 +163,14 @@ exports.login = async (req, res) => {
 
 
 exports.isAuthenticated = (rol) => async (req, res, next) => {
-    if (req.cookies.jwt) {
+
+    const authHeader = req.headers['authorization']
+
+    //console.log(authHeader)
+
+    if (authHeader) {
         try {
-            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+            const decodificada = await promisify(jwt.verify)(authHeader, process.env.JWT_SECRETO)
 
             console.log(decodificada)
             dbconn.query(
@@ -203,6 +209,43 @@ exports.isAuthenticated = (rol) => async (req, res, next) => {
 
     }
 }
+
+exports.verifyToken = async (req, res) => {
+    if (req.query.token) {
+        try {
+            const decodificada = await promisify(jwt.verify)(req.query.token, process.env.JWT_SECRETO)
+
+            dbconn.query(
+                `SELECT * FROM usuarios WHERE id = $1`,
+                [decodificada.id],
+                (err, results) => {
+                    if (err) {
+                        res.send({
+                            error: 'error'
+                        })
+                    } else {
+                        res.status(200).json({
+                            token: req.query.token,
+                            correo: results.rows[0].correo
+                        })
+                        
+                    }
+                }
+            )
+        } catch (error) {
+            res.send({
+                error: 'token no autorizado'
+            })
+        }
+    } else {
+        res.status(401).json({
+            error:"Accion no permitida",
+          });
+
+    }
+}
+
+
 exports.logout = (req, res) => {
     res.clearCookie('jwt')
     return res.send({ msg: `sesion eliminada`})

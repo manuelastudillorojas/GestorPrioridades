@@ -1,5 +1,18 @@
 const dbconn = require('../config/dbConn')
 
+const getSeveridadByAttr = (attr, index) => {
+
+  return new Promise((resolve, reject) => {
+    dbconn.query(`SELECT * FROM severidad WHERE ${attr} = ${index}`, (err, result) => {
+      if (err) {
+        reject(err)
+      }
+
+      resolve(result)
+    })
+  })
+}
+
 const getSeveridad = () => {
   return new Promise((resolve, reject) => {
     dbconn.query(`SELECT * FROM severidad`, (err, result) => {
@@ -65,5 +78,6 @@ module.exports = {
   addSeveridad,
   getSeveridadById,
   deleteSeveridad,
-  updateSeveridad
+  updateSeveridad,
+  getSeveridadByAttr
 }

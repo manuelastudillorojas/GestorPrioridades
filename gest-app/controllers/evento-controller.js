@@ -76,7 +76,7 @@ const addEvent = async (req, res) => {
     try {
 
         if (validaVacio(req.body.descripcion) && validaVacio(req.body.hora_registro) && validaVacio(req.body.estado) && validaVacio(req.body.puntaje_prio) && validaVacio(req.body.id_cliente)
-            && validaVacio(req.body.id_componente) && validaVacio(req.body.id_criticidad) && validaVacio(req.body.id_severidad)) {
+            && validaVacio(req.body.id_criticidad) && validaVacio(req.body.id_severidad)) {
 
             const evento = await eventsModel.addEvent(req.body)
             sendJsonStatus(res, 200, { 

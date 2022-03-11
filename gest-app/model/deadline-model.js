@@ -1,5 +1,17 @@
 const dbconn = require('../config/dbConn')
 
+const getDeadlineByAttr = (attr, index) => {
+  return new Promise((resolve, reject) => {
+    dbconn.query(`SELECT * FROM deadline WHERE ${attr} = ${index}`, (err, result) => {
+      if (err) {
+        reject(err)
+      }
+
+      resolve(result)
+    })
+  })
+}
+
 const getDeadline = () => {
   return new Promise((resolve, reject) => {
     dbconn.query(`SELECT * FROM deadline`, (err, result) => {
@@ -67,5 +79,6 @@ module.exports = {
   addDeadline,
   getDeadlineById,
   deleteDeadline,
-  updateDeadline
+  updateDeadline,
+  getDeadlineByAttr
 }

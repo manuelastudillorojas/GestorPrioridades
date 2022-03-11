@@ -1,5 +1,18 @@
 const dbconn = require('../config/dbConn')
 
+const getCriticidadByAttr = (attr, index, id_cliente) => {
+
+  return new Promise((resolve, reject) => {
+    dbconn.query(`SELECT * FROM criticidad WHERE ${attr} = '${index}' AND id_cliente = ${id_cliente}`, (err, result) => {
+      if (err) {
+        reject(err)
+      }
+
+      resolve(result)
+    })
+  })
+}
+
 const getCriticidad = () => {
   return new Promise((resolve, reject) => {
     dbconn.query(`SELECT * FROM criticidad`, (err, result) => {
@@ -70,5 +83,6 @@ module.exports = {
   addCriticidad,
   getCriticidadId,
   deleteCriticidad,
-  updateCriticidad
+  updateCriticidad,
+  getCriticidadByAttr
 }

@@ -1,5 +1,17 @@
 const dbconn = require('../config/dbConn')
 
+const getComponenteByAttr = (attr, index) => {
+  return new Promise((resolve, reject) => {
+    dbconn.query(`SELECT * FROM componente WHERE ${attr} = ${index}`, (err, result) => {
+      if (err) {
+        reject(err)
+      }
+
+      resolve(result)
+    })
+  })
+}
+
 const getComponente = () => {
   return new Promise((resolve, reject) => {
     dbconn.query(`SELECT * FROM componente`, (err, result) => {
@@ -65,5 +77,6 @@ module.exports = {
   addComponente,
   getComponenteById,
   deleteComponente,
-  updateComponente
+  updateComponente,
+  getComponenteByAttr
 }
